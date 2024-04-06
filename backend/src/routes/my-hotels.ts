@@ -29,10 +29,15 @@ router.post(
         const res = await cloudinary.v2.uploader.upload(dataURI);
         return res.url;
       });
+
+      const imageUrls = await Promise.all(uploadPromises);
       //2. if upload was successful, add the URLs to the new hotel
       //3. Save the new hotel in our DB
       //4. return a 201 status
-    } catch (error) {}
+    } catch (error) {
+      console.log("Error creating hotel: ", error);
+      res.status(500).json({ message: "Sth went wrong" });
+    }
   }
 );
 
