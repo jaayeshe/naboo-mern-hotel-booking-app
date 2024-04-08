@@ -12,7 +12,8 @@ declare global {
 //anything auth related that we need middleware for is in this file
 
 const verifyToken = (req: Request, res: Response, next: NextFunction) => {
-  //firstly get the auth token from the cookie that we'll send to us in the request
+  //firstly get the auth token from the cookie that we'll send to us in
+  //the request
 
   const token = req.cookies["auth_token"];
   if (!token) {
@@ -20,7 +21,8 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   }
 
   //if we have a token next we'll
-  //verify that the token is good by using the jwt secret key we defined in our env file
+  //verify that the token is good by using the jwt secret key we defined
+  //in our env file
 
   try {
     //we'll try to decode the token here
