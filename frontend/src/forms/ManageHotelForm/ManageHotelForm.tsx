@@ -18,11 +18,15 @@ const ManageHotelForm = () => {
   const formMethods = useForm<HotelFormData>();
   return;
   <FormProvider {...formMethods}>
-    <form></form>;
+    <form>
+      <DetailsSection />
+    </form>
+    ;
   </FormProvider>;
 };
 
 export default ManageHotelForm;
 
-// we need to use a Form Provider, so our child component can access to all the React Hook Form Methods
+// we need to use a Form Provider,
+//so our child component can access to all the React Hook Form Methods
 //
