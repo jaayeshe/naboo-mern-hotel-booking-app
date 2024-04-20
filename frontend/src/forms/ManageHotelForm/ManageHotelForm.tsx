@@ -21,14 +21,31 @@ export type HotelFormData = {
 
 const ManageHotelForm = () => {
   const formMethods = useForm<HotelFormData>();
+  const { handleSubmit } = formMethods;
+  // we are destructuring the handleSubmit fucntion from formMethods, which we get from use form hook...
+  // so the handleSubmit function will submit the form & handle any validation & then pass the data to...
+  // our function which we'll define later.
+
+  const onSubmit = handleSubmit((formData: HotelFormData) => {
+    // create a new FormData object & call our API
+    console.log(formData);
+  });
   return (
     <FormProvider {...formMethods}>
-      <form className="flex flex-col gap-10">
+      <form className="flex flex-col gap-10" onSubmit={onSubmit}>
         <DetailsSection />
         <TypesSection />
         <FacilitiesSection />
         <GuestsSection />
         <ImagesSection />
+        <span className="flex justify-end">
+          <button
+            type="submit"
+            className="bg-teal-700 text-white p-3 font-bold hover:bg-teal-600 text-xl rounded-xl "
+          >
+            Save
+          </button>
+        </span>
       </form>
     </FormProvider>
   );

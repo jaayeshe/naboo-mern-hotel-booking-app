@@ -26,7 +26,7 @@ const TypesSection = () => {
               type="radio"
               value={type}
               {...register("type", {
-                required: "This field is required",
+                required: "Mandatory Field",
               })}
               className="hidden"
             />
