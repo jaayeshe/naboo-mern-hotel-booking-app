@@ -9,7 +9,7 @@ const GuestsSection = () => {
   return (
     <div>
       <h2 className="text-2xl font-bold mb-3">Guests</h2>
-      <div className="grid grid-cols-2 p-6 gap-5 bg-teal-500 rounded-3xl">
+      <div className="grid grid-cols-2 p-6 gap-5 bg-gray-300 rounded-3xl">
         <label className="text-gray-900 text-sm font-semibold px-3">
           Adults
           <input
