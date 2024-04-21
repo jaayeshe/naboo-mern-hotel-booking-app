@@ -73,4 +73,5 @@ export default ManageHotelForm;
 // we need to use a Form Provider,
 //so our child component can access to all the React Hook Form Methods
 
-//
+// after having our formData obj complete
+// next,  we'll create the actual API call, in the addHotel.tsx at the page level
