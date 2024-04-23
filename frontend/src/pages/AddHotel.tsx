@@ -18,13 +18,17 @@ const AddHotel = () => {
   const handleSave = (HotelFormData: FormData) => {
     mutate(HotelFormData);
   };
-  return <ManageHotelForm onSave={handleSave} />;
+  return <ManageHotelForm onSave={handleSave} isLoading={isLoading} />;
 };
 export default AddHotel;
+
 //component for our new page
 
 //this is where we define our page component & render our ManageHotelForm in here
 
 // we're going to use the useMutation to call our addHotel endpoint, and pass in our fetch function named apiClient
 
-// creating fetch request
+//creating fetch request\
+
+// we have linked our fetch request that we created for our useMutation hook to handle all the state and all of that for us
+// the handleSave function calls the mutate function, we just to pass these things to our component and join them up

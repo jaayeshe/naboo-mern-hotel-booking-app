@@ -19,7 +19,12 @@ export type HotelFormData = {
   childCount: number;
 };
 
-const ManageHotelForm = () => {
+type Props = {
+  onSave: (hotelFormData: FormData) => void;
+  isLoading: boolean;
+};
+
+const ManageHotelForm = ({ onSave, isLoading }: Props) => {
   const formMethods = useForm<HotelFormData>();
   const { handleSubmit } = formMethods;
   // we are destructuring the handleSubmit function from formMethods, which we get from use form hook so the handleSubmit function will submit the form & handle any validation & then pass the data to our function which we'll define later.
@@ -45,6 +50,8 @@ const ManageHotelForm = () => {
     Array.from(formDataJson.imageFiles).forEach((imageFile) => {
       formData.append(`imageFiles`, imageFile);
     });
+
+    onSave(formData);
   });
 
   return (
@@ -57,10 +64,11 @@ const ManageHotelForm = () => {
         <ImagesSection />
         <span className="flex justify-end">
           <button
+            disabled={isLoading}
             type="submit"
-            className="bg-teal-700 text-white p-3 font-bold hover:bg-teal-600 text-xl rounded-xl "
+            className="bg-teal-700 text-white p-3 font-bold hover:bg-teal-600 text-xl rounded-xl disabled:bg-gray-500 "
           >
-            Save
+            {isLoading ? "Saving..." : "Save"}
           </button>
         </span>
       </form>
@@ -75,3 +83,8 @@ export default ManageHotelForm;
 
 // after having our formData obj complete
 // next,  we'll create the actual API call, in the addHotel.tsx at the page level
+
+//disabled: if isLoading is True, our button will be disabled, means th euser can't submit the form again while the previous request isLoading
+//this prevents to create the same hotel multiple times accidentally,  & also reduces the request on our server
+
+//Good practice: to disable our button while the app is in loading state
