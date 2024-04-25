@@ -1,4 +1,5 @@
 import mongoose, { mongo } from "mongoose";
+// import { BookingType } from "../shared/types";
 
 export type HotelType = {
   _id: string;
@@ -16,7 +17,6 @@ export type HotelType = {
   imageUrls: string[];
   lastUpdated: Date;
 };
-
 const hotelSchema = new mongoose.Schema<HotelType>({
   userId: { type: String, required: true },
   name: { type: String, required: true },
@@ -26,14 +26,15 @@ const hotelSchema = new mongoose.Schema<HotelType>({
   type: { type: String, required: true },
   adultCount: { type: Number, required: true },
   childCount: { type: Number, required: true },
-  facilities: [{ type: Number, required: true }],
+  facilities: [{ type: String, required: true }],
   pricePerNight: { type: Number, required: true },
   starRating: { type: Number, required: true, min: 1, max: 5 },
   imageUrls: [{ type: String, required: true }],
   lastUpdated: { type: Date, required: true },
+  // bookings: [bookingSchema],
 });
 
 const Hotel = mongoose.model<HotelType>("Hotel", hotelSchema);
-
 export default Hotel;
+
 //create a ts type for creating a new hotel

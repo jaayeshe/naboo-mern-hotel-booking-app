@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import multer from "multer";
 import cloudinary from "cloudinary";
 import Hotel, { HotelType } from "../models/hotel";
+
 import verifyToken from "../middleware/auth";
 import { body } from "express-validator";
 
@@ -91,3 +92,5 @@ export default router;
 //make sure only the logged in users can access these end points
 
 //after getting the end point we can register this endpoint with our express server
+
+// import { HotelType } from "../shared/types";
