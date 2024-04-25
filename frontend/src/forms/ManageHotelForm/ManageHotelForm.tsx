@@ -31,7 +31,7 @@ const ManageHotelForm = ({ onSave, isLoading }: Props) => {
 
   const onSubmit = handleSubmit((formDataJson: HotelFormData) => {
     // create a new FormData object & call our API
-    // console.log(formData);
+    // console.log(formDataJson);
     const formData = new FormData();
     formData.append("name", formDataJson.name);
     formData.append("city", formDataJson.city);
@@ -66,7 +66,7 @@ const ManageHotelForm = ({ onSave, isLoading }: Props) => {
           <button
             disabled={isLoading}
             type="submit"
-            className="bg-teal-700 text-white p-3 font-bold hover:bg-teal-600 text-xl rounded-xl disabled:bg-gray-500 "
+            className="bg-teal-700 text-white p-2 font-bold hover:bg-teal-600 text-xl rounded-xl disabled:bg-gray-500 "
           >
             {isLoading ? "Saving..." : "Save"}
           </button>
