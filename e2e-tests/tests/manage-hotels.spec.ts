@@ -48,7 +48,7 @@ test("should allow user to add a hotel", async ({ page }) => {
   ]);
 
   await page.getByRole("button", { name: "Save" }).click();
-  await expect(page.getByText("Hotel saved")).toBeVisible();
+  await expect(page.getByText("Hotel Saved!")).toBeVisible();
 });
 // this is where we'll put our addHotel tests & then...
 // whenever we come to edit hotel test we put that in here as well.
