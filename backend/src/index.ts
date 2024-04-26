@@ -32,8 +32,15 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/my-hotels", myHotelRoutes);
 
+app.get("*", (req: Request, res: Response) => {
+  res.send(path.join(__dirname, "../../frontend/dist.html"));
+});
+
 app.listen(7000, () => {
   console.log("Server running on localhost:7000");
 });
 
 //this is the file where our server starts
+
+// neeed to make sure that all of the requests that aren't API requests, go to our
+// index.html file that lives in the frontend dist folder
