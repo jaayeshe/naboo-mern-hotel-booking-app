@@ -72,6 +72,15 @@ router.post(
   }
 );
 
+router.get("/", verifyToken, async (req: Request, res: Response) => {
+  try {
+    const hotels = await Hotel.find({ userId: req.userId });
+    res.json(hotels);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching hotels" });
+  }
+});
+
 export default router;
 //this is going to contain the set of API endpoints that let's the user...
 //create, update & view their own hotels.
@@ -94,3 +103,5 @@ export default router;
 //after getting the end point we can register this endpoint with our express server
 
 // import { HotelType } from "../shared/types";
+
+// every user tha we get from the userId from the request & pass it to the find function
